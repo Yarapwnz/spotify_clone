@@ -51,7 +51,7 @@ const ShadowBlock = styled(Pressable)({
 });
 
 const BlockImage = styled(Image)({
-	width: 150,
+	width: 190,
 	height: 165,
 	borderRadius: 15,
 });

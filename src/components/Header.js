@@ -45,7 +45,7 @@ const LikedSong = styled(Text)({
 
 const LikedImage = styled(Image)({
 	height: 80,
-	width: [50, 70, 70],
+	width: [70, 70, 100],
 	borderTopLeftRadius: 10,
 	borderBottomLeftRadius: 10,
 });
@@ -70,7 +70,7 @@ const Item = ({ title, img }) => {
 						uri: `${img}`,
 					}}
 				/>
-				<LikedSong>{title}</LikedSong>
+				<Text sx={{ color: "white", fontSize: "$2" }}>{title}</Text>
 			</LikedContainer>
 		</FlexSong>
 	);
@@ -91,6 +91,7 @@ const Header = () => {
 		);
 		return () => subscription.remove();
 	});
+
 	const data = useMemo(() => {
 		return dimensions.window.width > 800 ? DATA.slice(0, 6) : DATA.slice(0, 6);
 	}, [dimensions.window.width]);

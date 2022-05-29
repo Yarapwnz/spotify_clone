@@ -43,7 +43,7 @@ const SongBlock = styled(View)({
 
 const ShadowBlock = styled(Pressable)({
 	bg: "blackBg",
-	width: [220, 220, 220],
+	width: 220,
 	left: 20,
 	mt: 20,
 	borderRadius: 20,
@@ -51,7 +51,7 @@ const ShadowBlock = styled(Pressable)({
 });
 
 const BlockImage = styled(Image)({
-	width: 150,
+	width: 190,
 	height: 165,
 	borderRadius: 15,
 });

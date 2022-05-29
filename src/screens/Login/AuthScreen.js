@@ -93,16 +93,16 @@ const AuthScreen = () => {
 			</SpotifyLogo>
 			<GrayLine />
 			<AuthForm>
-				<FormLabel>Адреса електронної пошти або ім’я користувача</FormLabel>
-				<FormInput placeholder="Адреса електронної пошти або ім’я користувача"></FormInput>
-				<FormLabel>Пароль</FormLabel>
-				<FormInput placeholder="Пароль" secureTextEntry={true} />
+				<FormLabel>Email address or username</FormLabel>
+				<FormInput placeholder="Email address or username"></FormInput>
+				<FormLabel>Password</FormLabel>
+				<FormInput placeholder="Password" secureTextEntry={true} />
 				<ResetPassword sx={{ fontWeight: "none" }}>
-					<Text>Забули пароль?</Text>
+					<Text>Forgot password?</Text>
 				</ResetPassword>
 				<ButtonsView>
 					<CheckBox
-						title="Запамя'тати мене"
+						title="Remember me?"
 						checked={checked}
 						onPress={() => setChecked(!checked)}
 						containerStyle={{
@@ -110,15 +110,15 @@ const AuthScreen = () => {
 						}}
 					/>
 					<LogIn onPress={() => toggleAuth()}>
-						<Text>Увійти</Text>
+						<Text>Log In</Text>
 					</LogIn>
 				</ButtonsView>
 			</AuthForm>
 
 			<GrayLine sx={{ mt: 50, width: [345, 55, 350] }} />
-			<RegisterLabel>Немає акаунта?</RegisterLabel>
+			<RegisterLabel>Don't have an account?</RegisterLabel>
 			<RegisterBtn>
-				<Text>Зареєструватися в Spotify</Text>
+				<Text>Sign Up For Spotify</Text>
 			</RegisterBtn>
 		</MainScreen>
 	);
