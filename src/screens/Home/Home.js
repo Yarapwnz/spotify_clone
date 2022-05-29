@@ -1,24 +1,29 @@
 import React from "react";
-import { styled, View } from "dripsy";
+import { ScrollView, styled, View } from "dripsy";
 import { Gradient } from "@dripsy/gradient";
 
 import Header from "../../components/Header";
 import ForUser from "../../components/ForUser";
+import Mixes from "../../components/Mixes";
+import ListenAgain from "../../components/ListenAgain";
 
 const MainScreen = styled(View)({
 	height: "100%",
 	justifyContent: "center",
 	alignItems: "center",
-	// margin: "0 auto",
 });
 
 const Home = () => {
 	return (
 		<>
 			<MainScreen>
-				<Gradient sx={{ minHeight: "100%", width: "100%" }} gradient="main">
-					<Header />
-					<ForUser />
+				<Gradient sx={{ height: "100%", width: "100%" }} gradient="main">
+					<ScrollView showsVerticalScrollIndicator={false}>
+						<Header />
+						<ForUser />
+						<Mixes />
+						<ListenAgain />
+					</ScrollView>
 				</Gradient>
 			</MainScreen>
 		</>

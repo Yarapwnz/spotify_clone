@@ -4,15 +4,16 @@ export const AuthContext = createContext();
 
 const AuthContextProvider = (props) => {
 	const [isAuthenticated, setIsAuthenticated] = useState(
-		AsyncStorage.getItem("@isAuthenticated") || false
+		AsyncStorage.getItem("isAuthenticated")
 	);
 
 	const toggleAuth = () => {
 		setIsAuthenticated((prev) => {
-			AsyncStorage.setItem("@isAuthenticated", JSON.stringify(!prev));
+			AsyncStorage.setItem("isAuthenticated", JSON.stringify(!prev));
 			return !prev;
 		});
 	};
+
 	return (
 		<AuthContext.Provider value={{ isAuthenticated, toggleAuth }}>
 			{props.children}

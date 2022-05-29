@@ -30,7 +30,7 @@ const Greeting = styled(Text)({
 const LikedContainer = styled(Pressable)({
 	bg: "gray",
 	height: [80],
-	width: [120, 150, 300],
+	width: [210, 210, 300],
 	borderRadius: 10,
 	flexDirection: "row",
 	alignItems: "center",
@@ -45,7 +45,7 @@ const LikedSong = styled(Text)({
 
 const LikedImage = styled(Image)({
 	height: 80,
-	width: 50,
+	width: [50, 70, 70],
 	borderTopLeftRadius: 10,
 	borderBottomLeftRadius: 10,
 });
@@ -63,29 +63,21 @@ const Logout = styled(Pressable)({
 
 const Item = ({ title, img }) => {
 	return (
-		<View
-			sx={{
-				alignItem: "center",
-				display: "flex",
-				justifyContent: "center",
-				left: 100,
-			}}
-		>
-			<FlexSong>
-				<LikedContainer>
-					<LikedImage
-						source={{
-							uri: `${img}`,
-						}}
-					/>
-					<LikedSong>{title}</LikedSong>
-				</LikedContainer>
-			</FlexSong>
-		</View>
+		<FlexSong>
+			<LikedContainer>
+				<LikedImage
+					source={{
+						uri: `${img}`,
+					}}
+				/>
+				<LikedSong>{title}</LikedSong>
+			</LikedContainer>
+		</FlexSong>
 	);
 };
 
 const Header = () => {
+	const { toggleAuth } = useContext(AuthContext);
 	const [dimensions, setDimensions] = useState({ window, screen });
 	const renderItem = ({ item }) => {
 		return <Item title={item.title} img={item.img} />;
@@ -100,7 +92,7 @@ const Header = () => {
 		return () => subscription.remove();
 	});
 	const data = useMemo(() => {
-		return dimensions.window.width > 1024 ? DATA.slice(0, 6) : DATA.slice(0, 6);
+		return dimensions.window.width > 800 ? DATA.slice(0, 6) : DATA.slice(0, 6);
 	}, [dimensions.window.width]);
 	return (
 		<Main>
@@ -113,7 +105,7 @@ const Header = () => {
 				}}
 			>
 				<Greeting>Good evening</Greeting>
-				<Logout>
+				<Logout onPress={() => toggleAuth()}>
 					<Text
 						sx={{ color: "white", fontSize: "$3", fontWeight: "bold", mt: 50 }}
 					>
@@ -121,26 +113,27 @@ const Header = () => {
 					</Text>
 				</Logout>
 			</View>
-
-			<ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-				{dimensions.window.width > 1024 ? (
-					<FlatList
-						data={data}
-						renderItem={renderItem}
-						numColumns={Math.ceil(data.length / 2)}
-						keyExtractor={(item, index) => index}
-						key={"desktop"}
-					/>
-				) : (
-					<FlatList
-						data={data}
-						renderItem={renderItem}
-						numColumns={Math.ceil(data.length / 3)}
-						keyExtractor={(item, index) => index}
-						key={"mobile"}
-					/>
-				)}
-			</ScrollView>
+			<View sx={{ alignItems: "center" }}>
+				<ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+					{dimensions.window.width > 800 ? (
+						<FlatList
+							data={data}
+							renderItem={renderItem}
+							numColumns={Math.ceil(data.length / 2)}
+							keyExtractor={(item, index) => index}
+							key={"desktop"}
+						/>
+					) : (
+						<FlatList
+							data={data}
+							renderItem={renderItem}
+							numColumns={Math.ceil(data.length / 3)}
+							keyExtractor={(item, index) => index}
+							key={"mobile"}
+						/>
+					)}
+				</ScrollView>
+			</View>
 		</Main>
 	);
 };

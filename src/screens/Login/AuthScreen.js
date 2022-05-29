@@ -84,7 +84,7 @@ const RegisterBtn = styled(Pressable)({
 });
 const AuthScreen = () => {
 	const [checked, setChecked] = useState(false);
-
+	const { toggleAuth } = useContext(AuthContext);
 	return (
 		<MainScreen>
 			<SpotifyLogo>
@@ -109,7 +109,7 @@ const AuthScreen = () => {
 							backgroundColor: "white",
 						}}
 					/>
-					<LogIn>
+					<LogIn onPress={() => toggleAuth()}>
 						<Text>Увійти</Text>
 					</LogIn>
 				</ButtonsView>

@@ -5,26 +5,27 @@ import { DripsyProvider } from "dripsy";
 import { theme } from "./src/constants/theme";
 import AuthScreen from "./src/screens/Login/AuthScreen";
 import Home from "./src/screens/Home/Home";
+import AuthContextProvider, { AuthContext } from "./src/context/authContext";
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-	// const { isAuthenticated } = useContext(AuthContext);
-	const isAuthenticated = useState(false);
+	const { isAuthenticated } = useContext(AuthContext);
+	console.log(isAuthenticated);
 	return (
 		<DripsyProvider theme={theme}>
 			<NavigationContainer>
 				<Stack.Navigator>
 					{isAuthenticated ? (
 						<Stack.Screen
-							name="Login"
-							component={AuthScreen}
+							name="Home"
+							component={Home}
 							options={{ headerShown: false }}
 						/>
 					) : (
 						<Stack.Screen
-							name="Home"
-							component={Home}
+							name="Login"
+							component={AuthScreen}
 							options={{ headerShown: false }}
 						/>
 					)}
@@ -34,4 +35,12 @@ const App = () => {
 	);
 };
 
-export default App;
+const AppWithProdiver = () => {
+	return (
+		<AuthContextProvider>
+			<App />
+		</AuthContextProvider>
+	);
+};
+
+export default AppWithProdiver;

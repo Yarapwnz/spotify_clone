@@ -79,7 +79,7 @@ const Item = ({ title, img, description }) => {
 	);
 };
 
-const ForUser = () => {
+const Mixes = () => {
 	const renderItem = ({ item }) => {
 		return (
 			<Item title={item.title} img={item.img} description={item.description} />
@@ -104,7 +104,7 @@ const ForUser = () => {
 	return (
 		<Main>
 			<HeadBlock>
-				<Greeting>Made For User</Greeting>
+				<Greeting>Mixes</Greeting>
 				<SeeAll>
 					<Text sx={{ color: "white" }}>See all</Text>
 				</SeeAll>
@@ -132,4 +132,4 @@ const ForUser = () => {
 	);
 };
 
-export default ForUser;
+export default Mixes;
