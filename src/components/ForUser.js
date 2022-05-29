@@ -99,8 +99,7 @@ const ForUser = () => {
 	const data = useMemo(() => {
 		return dimensions.window.width > 800 ? DATA.slice(0, 7) : DATA;
 	}, [dimensions.window.width]);
-	console.log(data);
-	console.log(dimensions.window.width);
+
 	return (
 		<Main>
 			<HeadBlock>

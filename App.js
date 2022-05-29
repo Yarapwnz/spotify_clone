@@ -11,7 +11,6 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
 	const { isAuthenticated } = useContext(AuthContext);
-	console.log(isAuthenticated);
 	return (
 		<DripsyProvider theme={theme}>
 			<NavigationContainer>

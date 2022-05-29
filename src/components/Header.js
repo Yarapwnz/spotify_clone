@@ -39,8 +39,8 @@ const LikedContainer = styled(Pressable)({
 
 const LikedSong = styled(Text)({
 	color: "white",
-	padding: 15,
-	fontSize: "$3",
+	padding: [10, 15, 15],
+	fontSize: ["$1", "$3", "$3"],
 });
 
 const LikedImage = styled(Image)({
@@ -70,7 +70,7 @@ const Item = ({ title, img }) => {
 						uri: `${img}`,
 					}}
 				/>
-				<Text sx={{ color: "white", fontSize: "$2" }}>{title}</Text>
+				<LikedSong>{title}</LikedSong>
 			</LikedContainer>
 		</FlexSong>
 	);
