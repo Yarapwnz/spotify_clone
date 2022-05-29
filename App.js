@@ -1,20 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useContext, useState, createContext, useReducer } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { DripsyProvider } from "dripsy";
+import { theme } from "./src/constants/theme";
+import AuthScreen from "./src/screens/Login/AuthScreen";
+import Home from "./src/screens/Home/Home";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const Stack = createNativeStackNavigator();
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const App = () => {
+	// const { isAuthenticated } = useContext(AuthContext);
+	const isAuthenticated = useState(false);
+	return (
+		<DripsyProvider theme={theme}>
+			<NavigationContainer>
+				<Stack.Navigator>
+					{isAuthenticated ? (
+						<Stack.Screen
+							name="Login"
+							component={AuthScreen}
+							options={{ headerShown: false }}
+						/>
+					) : (
+						<Stack.Screen
+							name="Home"
+							component={Home}
+							options={{ headerShown: false }}
+						/>
+					)}
+				</Stack.Navigator>
+			</NavigationContainer>
+		</DripsyProvider>
+	);
+};
+
+export default App;
